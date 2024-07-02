@@ -11,8 +11,11 @@ protected:
 
     Camera2D camera;
 
+    int returnCode;
+
 public:
     std::string getTitle(){return title;}
+    int getReturnCode(){return returnCode;}
 
     virtual void Update(float dt)=0;
     virtual void Draw()=0;
@@ -23,5 +26,8 @@ public:
 };
 
 enum class Scenes{
-    MainMenu
+    MainMenu,
+    GamePlay,
+    LevelEditor,
+    Option
 };

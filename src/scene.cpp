@@ -18,4 +18,6 @@ Scene::Scene(std::string title, int cameraZoom) : title{title}{
 
     camera = { 0 };
     camera.zoom = cameraZoom;
+
+    returnCode = 0;
 }

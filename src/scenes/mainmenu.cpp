@@ -3,6 +3,8 @@
 #include "scene.h"
 
 void MainMenuScene::Update(float dt){
+    if(startgameButton.onClick(MOUSE_LEFT_BUTTON))
+        returnCode = 1;
 }
 
 void MainMenuScene::Draw(){
