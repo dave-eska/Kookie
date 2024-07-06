@@ -2,8 +2,6 @@
 
 #include <fstream>
 
-#include <iostream>
-#include <ostream>
 #include <raylib.h>
 
 #include <json/json.h>
@@ -17,7 +15,12 @@ void Tile::Update(){
 }
 
 void Tile::Draw(){
-    DrawTextureEx(texture, {body.x, body.y}, 0, 3, WHITE);
+    if(animationOnDefault){
+        DrawSpriteAnimationPro(animation, {body.x, body.y, TILE_SIZE, TILE_SIZE}, {0, 0}, 0, WHITE);
+    }
+    else if(isRunningAnimation) {
+        DrawSpriteAnimationPro(animation, {body.x, body.y, TILE_SIZE, TILE_SIZE}, {0, 0}, 0, WHITE, isRunningAnimation);
+    }
 }
 
 Tile::Tile(){
@@ -39,12 +42,17 @@ Tile::Tile(int id, Vector2 pos, int z_level) : id{id}, body{pos.x, pos.y, TILE_S
         name = jsonTile["name"].asString();
         type = jsonTile["type"].asString();
 
-        if(jsonTile.isMember("fps")) fps = jsonTile["fps"].asInt();
         if(jsonTile.isMember("animationOnDefault")) animationOnDefault = jsonTile["animationOnDefault"].asBool();
+
+        if(jsonTile["fps"].isArray()){
+            int probabulity = GetRandomValue(0, jsonTile["fps"].size()-1);
+            fps = jsonTile["fps"][probabulity].asInt();
+        }else{
+            fps = jsonTile["fps"].asInt();
+        }
 
         if(jsonTile["texture"].isArray()){
             int probabulity = GetRandomValue(0, jsonTile["texture"].size()-1);
-            std::cout<<jsonTile["texture"][probabulity].asString().c_str()<<std::endl;
             texture = LoadTexture(jsonTile["texture"][probabulity].asString().c_str());
         }else{
             texture = LoadTexture(jsonTile["texture"].asString().c_str());

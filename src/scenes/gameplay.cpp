@@ -15,5 +15,5 @@ void GameplayScene::Unload(){
 }
 
 GameplayScene::GameplayScene(){
-    tile = Tile(1, {0, 0}, 0);
+    tile = Tile(2, {0, 0}, 0);
 }

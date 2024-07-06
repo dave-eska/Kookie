@@ -21,6 +21,7 @@ private:
     Texture2D texture;
     SpriteAnimation animation;
     bool animationOnDefault;
+    bool isRunningAnimation;
 
 public:
     bool hasAnimation();

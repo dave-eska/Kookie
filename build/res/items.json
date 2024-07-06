@@ -14,7 +14,7 @@
     {
         "name": "water",
         "type": "fluid",
-        "fps": [1, 2, 2, 1, 1, 2],
+        "fps": [2, 3, 3, 2, 2, 3],
         "animationOnDefault": true,
         "texture": ["res/img/water.png", "res/img/water1.png",  "res/img/water2.png", "res/img/water3.png"]
     }
