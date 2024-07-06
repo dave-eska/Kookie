@@ -12,7 +12,6 @@ void changeScene(Scenes &currentScene, Scenes newScene);
 
 int main(){
 
-    SetTraceLogLevel(LOG_NONE);
     InitWindow(GetScreenWidth(), GetScreenHeight(), "Kookies");
     SetExitKey(0);
 

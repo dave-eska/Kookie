@@ -28,7 +28,7 @@ Tile::Tile(int id, Vector2 pos, int z_level) : id{id}, body{pos.x, pos.y, TILE_S
 
     Json::Reader jsonreader;
 
-    std::ifstream file("res/yes.json");
+    std::ifstream file("res/items.json");
     Json::Value jsonvalue;
     jsonreader.parse(file, jsonvalue);
 
@@ -42,14 +42,11 @@ Tile::Tile(int id, Vector2 pos, int z_level) : id{id}, body{pos.x, pos.y, TILE_S
         if(jsonTile.isMember("fps")) fps = jsonTile["fps"].asInt();
         if(jsonTile.isMember("animationOnDefault")) animationOnDefault = jsonTile["animationOnDefault"].asBool();
 
-        std::cout<<"hi"<<std::endl;
-
         if(jsonTile["texture"].isArray()){
             int probabulity = GetRandomValue(0, jsonTile["texture"].size()-1);
             std::cout<<jsonTile["texture"][probabulity].asString().c_str()<<std::endl;
             texture = LoadTexture(jsonTile["texture"][probabulity].asString().c_str());
         }else{
-            std::cout<<jsonTile["texture"].asString().c_str()<<std::endl;
             texture = LoadTexture(jsonTile["texture"].asString().c_str());
         }
     }

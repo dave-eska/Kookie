@@ -8,7 +8,7 @@
     {
         "name": "grass",
         "type": "background",
-        "texture": ["gbuild/res/img/grass1.png", "gbuild/res/img/grass1.png"]
+        "texture": ["res/img/grass1.png", "res/img/grass1.png"]
     },
     //2
     {
@@ -16,6 +16,6 @@
         "type": "fluid",
         "fps": [1, 2, 2, 1, 1, 2],
         "animationOnDefault": true,
-        "texture": ["gbuild/res/img/water.png", "gbuild/res/img/water1.png",  "gbuild/res/img/water2.png", "gbuild/res/img/water3.png"]
+        "texture": ["res/img/water.png", "res/img/water1.png",  "res/img/water2.png", "res/img/water3.png"]
     }
 ]
