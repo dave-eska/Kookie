@@ -15,6 +15,9 @@ void MainMenuScene::Draw(){
     optionButton.Draw();
 }
 
+void MainMenuScene::Unload(){
+}
+
 MainMenuScene::MainMenuScene() : Scene("Main Menu", 0){
     mainmenu_texture = LoadTexture("res/img/main_menu.png");
 

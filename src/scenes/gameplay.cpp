@@ -1,18 +1,22 @@
 #include "gameplay.h"
 #include "raylib.h"
 
+#include <iostream>
+
 void GameplayScene::Update(float dt){
-    if(IsKeyDown(KEY_W)) player.y -= 250 * dt;
-    if(IsKeyDown(KEY_A)) player.x -= 250 * dt;
-    if(IsKeyDown(KEY_S)) player.y += 250 * dt;
-    if(IsKeyDown(KEY_D)) player.x += 250 * dt;
+    if(IsKeyPressed(KEY_ESCAPE))
+        returnCode = 1;
 }
 
 void GameplayScene::Draw(){
-    DrawRectangleRec(player, BLACK);
+    tile.Draw();
+}
+
+void GameplayScene::Unload(){
+    tile.Draw();
 }
 
 GameplayScene::GameplayScene(){
-    player = {0, 0, 50, 50};
-    camera.target = {player.x, player.y};
+    std::cout<<"gameplay"<<std::endl;
+    tile = Tile(1, {0, 0}, 0);
 }

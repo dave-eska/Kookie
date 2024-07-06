@@ -1,10 +1,18 @@
 #include "scene.h"
 #include "raylib.h"
 
+void Scene::resetReturnCode(){
+    returnCode = 0;
+}
+
 void Scene::Update(float dt){
 }
 
 void Scene::Draw(){
+}
+
+void Scene::Unload(){
+
 }
 
 Scene::Scene(){

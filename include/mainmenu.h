@@ -16,5 +16,7 @@ public:
     void Update(float dt) override;
     void Draw() override;
 
+    void Unload() override;
+
     MainMenuScene();
 };

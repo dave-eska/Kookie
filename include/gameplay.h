@@ -3,13 +3,16 @@
 #include <raylib.h>
 
 #include "scene.h"
+#include "tile.h"
 
 class GameplayScene : public Scene{
 private:
-    Rectangle player;
+    Tile tile;
 public:
     void Update(float dt) override;
     void Draw() override;
+
+    void Unload() override;
 
     GameplayScene();
 };

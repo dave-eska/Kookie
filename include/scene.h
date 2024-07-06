@@ -17,8 +17,12 @@ public:
     std::string getTitle(){return title;}
     int getReturnCode(){return returnCode;}
 
+    void resetReturnCode();
+
     virtual void Update(float dt)=0;
     virtual void Draw()=0;
+
+    virtual void Unload()=0;
 
     Scene();
     Scene(std::string title, int cameraZoom);
