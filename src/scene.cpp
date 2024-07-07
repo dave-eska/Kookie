@@ -18,7 +18,7 @@ void Scene::Unload(){
 Scene::Scene(){
 }
 
-Scene::Scene(std::string title, int cameraZoom) : title{title}{
+Scene::Scene(std::string title, float cameraZoom) : title{title}{
     is_debugging = false;
     is_typing = false;
 

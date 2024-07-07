@@ -16,6 +16,8 @@ private:
     Rectangle body;
     int z_level;
 
+    int slot;
+
     bool hasCollision;
 
     Texture2D texture;
@@ -25,6 +27,9 @@ private:
 
 public:
     bool hasAnimation();
+    int getSlot(){ return slot; };
+
+    void setSlot(int val){ slot = val; }
 
     void Update();
     void Draw();

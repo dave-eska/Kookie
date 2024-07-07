@@ -25,7 +25,7 @@ public:
     virtual void Unload()=0;
 
     Scene();
-    Scene(std::string title, int cameraZoom);
+    Scene(std::string title, float cameraZoom);
 
 };
 

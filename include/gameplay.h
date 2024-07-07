@@ -2,12 +2,12 @@
 
 #include <raylib.h>
 
+#include "level.h"
 #include "scene.h"
-#include "tile.h"
 
 class GameplayScene : public Scene{
 private:
-    Tile tile;
+    Level* level;
 public:
     void Update(float dt) override;
     void Draw() override;
