@@ -6,17 +6,23 @@
 
 #include <raylib.h>
 
+#include <box2d/b2_world.h>
+
 #include "tile.h"
 
 class Level{
 private:
-    std::vector<std::unique_ptr<Tile>> tiles;
     Vector2 starting_pos;
     Vector2 size;
     int total_layers;
 
     std::string name;
+
+    b2World* b2world;
+
+    std::vector<std::unique_ptr<Tile>> loadLevelFromFile(std::string file_path);
 public:
+    std::vector<std::unique_ptr<Tile>> tiles;
     void loadPath(std::string path);
 
     void Update(float dt);

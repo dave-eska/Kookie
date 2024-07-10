@@ -1,9 +1,15 @@
 #pragma once
 
-#include "animation.h"
+#include <memory>
 #include <string>
 
 #include <raylib.h>
+
+#include <box2d/b2_body.h>
+#include <box2d/b2_polygon_shape.h>
+#include <box2d/b2_world.h>
+
+#include "animation.h"
 
 #define TILE_SIZE (96)
 
@@ -18,21 +24,29 @@ private:
 
     int slot;
 
-    bool hasCollision;
+    b2Body* b2body;
+    b2PolygonShape groundBox;
 
     Texture2D texture;
     SpriteAnimation animation;
     bool animationOnDefault;
     bool isRunningAnimation;
 
+    static constexpr float PIXELS_PER_METER = 50.0f;
+
 public:
     bool hasAnimation();
     int getSlot(){ return slot; };
+
+    Rectangle getBody(){ return body; }
+    std::string getType(){ return type; };
 
     void setSlot(int val){ slot = val; }
 
     void Update();
     void Draw();
+
+    void initCollision(b2World* world);
 
     Tile();
     Tile(int id, Vector2 pos, int z_level);
