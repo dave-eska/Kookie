@@ -35,11 +35,12 @@ Level::Level(){
 }
 
 Level::Level(std::string path){
-    tiles = loadLevelFromFile(path);
     name = path;
 
     b2Vec2 gravity(0.0f, 0.0f);
     b2world = new b2World(gravity);
+
+    tiles = loadLevelFromFile(path);
 
     std::cout<<"Successly loaded level '"<<path<<"'."<<std::endl;
 }

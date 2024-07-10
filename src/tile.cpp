@@ -26,19 +26,29 @@ void Tile::Draw(){
     else if(isRunningAnimation) {
         DrawSpriteAnimationPro(animation, {body.x, body.y, TILE_SIZE, TILE_SIZE}, {0, 0}, 0, WHITE, isRunningAnimation);
     }
+
+     for (b2Fixture* fixture = b2body->GetFixtureList(); fixture; fixture = fixture->GetNext()) {
+        b2Shape* shape = fixture->GetShape();
+
+        if (shape->GetType() == b2Shape::e_polygon) {
+            b2PolygonShape* polyShape = static_cast<b2PolygonShape*>(shape);
+            int vertexCount = polyShape->m_count;
+
+            // Draw the collider outline
+            for (int i = 0; i < vertexCount; ++i) {
+                b2Vec2 vertexA = b2body->GetWorldPoint(polyShape->m_vertices[i]);
+                b2Vec2 vertexB = b2body->GetWorldPoint(polyShape->m_vertices[(i + 1) % vertexCount]);
+
+                b2Vec2 vertexAPixelPos = b2Vec2(vertexA.x * PIXELS_PER_METER, vertexA.y * PIXELS_PER_METER);
+                b2Vec2 vertexBPixelPos = b2Vec2(vertexB.x * PIXELS_PER_METER, vertexB.y * PIXELS_PER_METER);
+
+                // Directly draw using Raylib's DrawLine function
+                // Remember, Raylib uses screen coordinates directly
+                DrawLine(vertexBPixelPos.x, vertexBPixelPos.y, vertexAPixelPos.x, vertexAPixelPos.y, RED);
+            }
+        }
+    }
 }
-
-/*
-void Tile::initCollision(std::unique_ptr<b2World>& world){
-    b2BodyDef groundBodyDef;
-    groundBodyDef.position.Set(0.0f, -10.0f);
-
-    b2body = world->CreateBody(&groundBodyDef);
-    groundBox.SetAsBox(50.0f, 10.0f);
-
-    b2body->CreateFixture(&groundBox, 0.0f);
-}
-*/
 
 void Tile::initCollision(b2World* world) {
     if (!world) {
@@ -64,11 +74,9 @@ void Tile::initCollision(b2World* world) {
     }
 
     // Define the shape
-    b2PolygonShape boxShape;
     boxShape.SetAsBox(halfWidth, halfHeight);
 
     // Define the fixture
-    b2FixtureDef fixtureDef;
     fixtureDef.shape = &boxShape;
     fixtureDef.density = 1.0f; // Static bodies don't need density, but it's good practice to define it
     fixtureDef.friction = 0.3f;

@@ -10,6 +10,7 @@
 #include <box2d/b2_world.h>
 
 #include "animation.h"
+#include "box2d/b2_fixture.h"
 
 #define TILE_SIZE (96)
 
@@ -25,7 +26,8 @@ private:
     int slot;
 
     b2Body* b2body;
-    b2PolygonShape groundBox;
+    b2PolygonShape boxShape;
+    b2FixtureDef fixtureDef;
 
     Texture2D texture;
     SpriteAnimation animation;

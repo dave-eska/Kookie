@@ -14,8 +14,8 @@ protected:
     int returnCode;
 
 public:
-    std::string getTitle(){return title;}
-    int getReturnCode(){return returnCode;}
+    std::string getTitle(){ return title; }
+    int getReturnCode(){ return returnCode; }
 
     void resetReturnCode();
 
