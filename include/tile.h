@@ -48,7 +48,7 @@ public:
     void Update();
     void Draw();
 
-    void initCollision(b2World* world);
+    void initCollision(b2World*& world);
 
     Tile();
     Tile(int id, Vector2 pos, int z_level);

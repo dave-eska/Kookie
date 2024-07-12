@@ -18,11 +18,11 @@ private:
 
     std::string name;
 
-    b2World* b2world;
-
     std::vector<std::unique_ptr<Tile>> loadLevelFromFile(std::string file_path);
 public:
     std::vector<std::unique_ptr<Tile>> tiles;
+    b2World* b2world;
+
     void loadPath(std::string path);
 
     void Update(float dt);

@@ -47,7 +47,7 @@ int main(){
                 break;
         }
 
-        DrawFPS(GetScreenWidth()-50, GetScreenHeight()-30);
+         DrawFPS(GetScreenWidth()-50, GetScreenHeight()-30);
         EndDrawing();
     }
 

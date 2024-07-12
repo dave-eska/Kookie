@@ -2,7 +2,8 @@
 #include "raylib.h"
 
 void Scene::resetReturnCode(){
-    returnCode = 0;
+    if(returnCode != 0)
+        returnCode = 0;
 }
 
 void Scene::Update(float dt){

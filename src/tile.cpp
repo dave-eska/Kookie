@@ -27,6 +27,7 @@ void Tile::Draw(){
         DrawSpriteAnimationPro(animation, {body.x, body.y, TILE_SIZE, TILE_SIZE}, {0, 0}, 0, WHITE, isRunningAnimation);
     }
 
+    /*
      for (b2Fixture* fixture = b2body->GetFixtureList(); fixture; fixture = fixture->GetNext()) {
         b2Shape* shape = fixture->GetShape();
 
@@ -48,9 +49,10 @@ void Tile::Draw(){
             }
         }
     }
+    */
 }
 
-void Tile::initCollision(b2World* world) {
+void Tile::initCollision(b2World*& world) {
     if (!world) {
         std::cerr << "Error: world is null" << std::endl;
         return;
